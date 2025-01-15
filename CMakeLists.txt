@@ -148,7 +148,7 @@ target_include_directories(btop SYSTEM PRIVATE include)
 # Enable pthreads
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
-target_link_libraries(btop Threads::Threads)
+target_link_libraries(btop dl Threads::Threads)
 
 # Enable GPU support
 if(LINUX AND BTOP_GPU)

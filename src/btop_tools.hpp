@@ -19,7 +19,7 @@ tab-size = 4
 #pragma once
 
 #if !defined(NDEBUG)
-# define BTOP_DEBUG
+# define BTOP_DEBUG1
 #endif
 
 #include <algorithm>        // for std::ranges::count_if
@@ -357,7 +357,7 @@ namespace Tools {
 			Logger::error(fmt::format("safeVal() called with invalid key: [{}] (Compile btop with DEBUG=true for more extensive logging!)", key));
 			return fallback;
 		}
-	};
+	}
 #endif
 
 	template <typename T>
@@ -378,7 +378,7 @@ namespace Tools {
 			Logger::error(fmt::format("safeVal() called with invalid index: [{}] (Compile btop with DEBUG=true for more extensive logging!)", index));
 			return fallback;
 		}
-	};
+	}
 #endif
 
 
