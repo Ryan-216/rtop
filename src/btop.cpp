@@ -119,7 +119,7 @@ namespace Global {
 }
 
 static void print_version() {
-	if constexpr (GIT_COMMIT.empty()) {
+	if constexpr (GIT_COMMIT.empty()) { //用于指定表达式或函数在编译时求值
 		fmt::println("btop version: {}", Global::Version);
 	} else {
 		fmt::println("btop version: {}+{}", Global::Version, GIT_COMMIT);
@@ -192,7 +192,7 @@ void argumentParser(const int argc, char **argv) {
 				exit(1);
 			}
 			else if (const string val = argv[i]; isint(val) and val.size() == 1) {
-				Global::arg_preset = std::clamp(stoi(val), 0, 9);
+				Global::arg_preset = std::clamp(stoi(val), 0, 9); //限制在0-9
 			}
 			else {
 				fmt::println("{0}error: {1}Preset option only accepts an integer value between 0-9\n", "\033[1;31m", "\033[0m");
@@ -908,8 +908,8 @@ int main(int argc, char **argv) {
 	Global::start_time = time_s();
 
 	//? Save real and effective userid's and drop privileges until needed if running with SUID bit set
-	Global::real_uid = getuid();
-	Global::set_uid = geteuid();
+	Global::real_uid = getuid();	//获取进程实际用户id
+	Global::set_uid = geteuid();	//获取进程有效用户id
 	if (Global::real_uid != Global::set_uid) {
 		if (seteuid(Global::real_uid) != 0) {
 			Global::real_uid = Global::set_uid;

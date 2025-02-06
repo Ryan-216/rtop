@@ -258,7 +258,7 @@ namespace Tools {
 	//* Compare <first> with all following values
 	template<typename First, typename ... T>
 	inline bool is_in(const First& first, const T& ... t) {
-		return ((first == t) or ...);
+		return ((first == t) or ...);	//右折叠表达式 (first == t1) or (first == t2) or ... or (first == tn)
 	}
 
 	//* Return current time since epoch in seconds
